@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+.main{
+	margin:0 auto;
+	width:1100px;
+	height:567px;
+}
+.application .left {
+	margin:60px 0 97px 97px;
+	width:380px;
+	height:400px;
+	border:#e5e5e5 solid 6px;
+	border-radius:10px;
+
+}
+.application .left h3{
+	font-size: 24px;
+	font-weight:700px;
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
+	margin-top: 0;
+	padding: 35px 0 22px 0;
+	margin-bottom:48px;
+}
+.application .left .left-form{
+	margin:0 auto;
+	width:310px;
+}
+.application .left ul li{
+	margin-bottom:30px;
+}
+.application .left ul li input{
+	width:289px;
+	height:34px;
+	border-radius:5px;
+	border: 1px solid #ccc;
+	padding-left:20px;
+}
+#b_login{
+	width:310px;
+	height:46px;
+	background-color:#ff6640;
+	color:#fff;
+	font-size:24px;
+	text-align:center;
+	border-radius:5px;
+	border-width:0px;
+}
+.service-login{
+	width:310px;			
+	margin:0 auto;
+}
+.service-login a{
+	float:left;
+	font-size:12px;
+}
+.right{
+	width:380px;
+	height:400px;
+	float:right;
+	margin-right:97px;
+}

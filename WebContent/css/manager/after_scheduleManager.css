@@ -1,0 +1,61 @@
+.main{
+	/*border:#F00 solid 1px;*/
+	margin:0 auto;
+	width:1000px;
+}
+.application .add-scheduld{
+	width:970px;	
+	margin:0 auto;
+	margin-bottom:20px;
+	margin-top:20px;
+}
+.add-schedule-title{
+	border-bottom:#ccc solid 1px;
+	width:900px;
+	height:50px;
+	margin:0 auto;
+	cursor:pointer;
+	line-height:50px;
+	color:#ccc;
+	font-weight:700;
+	font-size:24px;
+	text-align:center;
+	margin-bottom:20px;
+}
+.add-user-context{
+	width:900px;
+	margin:0 auto;
+	margin-bottom:20px;
+}
+.bottom{
+	background-color:#ccc;
+	cursor:pointer;
+	height:25px;
+	border-radius:5px;
+	width:72px;
+	border-width:0px;
+}
+.add-user-context td{
+	width:163px;
+	text-align:center;
+}
+
+.bottom:hover{
+	background-color:#ff6640;
+}
+
+.application .user-table{
+	width:900px;
+	margin:0 auto;
+	margin-bottom:20px;
+}
+.application .user-table table{
+	width:900px;
+	text-align:center;
+	margin:0 auto;
+	
+}
+.application .user-table table td{
+	border:#ccc solid 1px;
+	height:30px;
+}

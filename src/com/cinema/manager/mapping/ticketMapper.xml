@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cinema.manager.mapping.ticketMapper">
+	<resultMap type="Ticket" id="ticketResultMap">
+		<id property="ticketId" column="TICKETID" />
+		<result property="seatNo" column="SEATNO" /> 
+		<result property="ticketPrice" column="TICKETPRICE" />
+		<association property="schedule" javaType="Schedule">
+			<id property="scheduleItemId" column="SCHEDULEITEMID"/>
+			<result property="scheduleItemTime" column="SCHEDULEITEMTIME"/>
+			<association property="movie" javaType="Movie">
+				<id property="movieId" column="MOVIEID"/>
+				<result property="movieName" column="MOVIENAME"/>
+				<result property="moviePoster" column="MOVIEPOSTER"/>
+				<result property="movieDirector" column="MOVIEDIRECTOR"/>
+				<result property="movieActor" column="MOVIEACTOR"/>
+				<result property="moviePrice" column="MOVIEPRICE"/>
+				<association property="movieType" javaType="MovieType">
+					<id property="movieTypeId" column="MOVIETYPEID"/>
+					<result property="movieType" column="MOVIETYPE"/>
+				</association>
+			</association>
+			<association property="videoHall" javaType="VideoHall">
+				<id property="videoHallId" column="VIDEOHALLID"/>
+				<result property="videoHallSeatNum" column="VIDEOHALLSEATNUM"/>
+				<result property="videoHallSeatRows" column="VIDEOHALLSEATROWS"/>
+				<result property="videoHallSeatCols" column="VIDEOHALLSEATCOLS"/>
+				<association property="videoHallType" javaType="VideoHallType">
+					<id property="videoHallTypeId" column="VIDEOHALLTYPEID"/>
+					<result property="videoHallType" column="VIDEOHALLTYPE"/>
+				</association>
+			</association>
+		</association>
+		
+		<association property="ticketType" javaType="TicketType">
+			<id property="ticketTypeId" column="TICKETTYPEID"/>
+			<result property="ticketType" column="TICKETTYPE"/>
+			<result property="ticketDiscount" column="TICKETDISCOUNT"/>
+		</association>
+		
+	</resultMap>
+	<select id="queryTicketAll" resultMap="ticketResultMap">
+		SELECT T1.TICKETTYPEID,T1.TICKETID,T1.SCHEDULEITEMID,T1.SEATNO,T1.TICKETPRICE,T2.TICKETTYPE,T2.TICKETDISCOUNT,S1.SCHEDULEITEMTIME,S1.VIDEOHALLID,S1.MOVIEID,S1.SCHEDULEITEMID,M1.MOVIEID,M1.MOVIENAME,M1.MOVIEPOSTER,M1.MOVIEDIRECTOR,M1.MOVIEACTOR,M1.MOVIETYPEID,M1.MOVIEPRICE,M2.MOVIETYPE,V2.VIDEOHALLTYPE,V1.VIDEOHALLID,V1.VIDEOHALLTYPEID,V1.VIDEOHALLSEATNUM,V1.VIDEOHALLSEATROWS,V1.VIDEOHALLSEATCOLS FROM TICKET T1,TICKETTYPE T2,SCHEDULE S1,MOVIE M1,MOVIETYPE M2,VIDEOHALL V1,VIDEOHALLTYPE V2 WHERE T1.TICKETTYPEID=T2.TICKETTYPEID AND T1.SCHEDULEITEMID=S1.SCHEDULEITEMID AND S1.MOVIEID=M1.MOVIEID AND S1.VIDEOHALLID=V1.VIDEOHALLID AND V1.VIDEOHALLTYPEID=V2.VIDEOHALLTYPEID AND M1.MOVIETYPEID=M2.MOVIETYPEID
+	</select>
+</mapper>

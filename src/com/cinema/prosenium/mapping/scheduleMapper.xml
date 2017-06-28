@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cinema.prosenium.mapping.scheduleMapper">
+	<!-- 前台场次 -->
+	<resultMap id="ScheduleResultMap" type="com.cinema.prosenium.entity.Schedule">
+		<id property="scheduleItemId" column="SCHEDULEITEMID"/>
+		<result property="scheduleItemTime" column="SCHEDULEITEMTIME"/>
+		<association property="movie" javaType="com.cinema.prosenium.entity.Movie">
+			<id property="movieId" column="MOVIEID"/>
+			<result property="movieName" column="MOVIENAME"/>
+			<result property="moviePoster" column="MVOIEPOSTER"/>
+			<result property="movieDirector" column="MOVIEDIRECTOR"/>
+			<result property="movieActor" column="MOVIEACTOR"/>
+			<result property="moviePrice" column="MOVIEPRICE"/>
+			<result property="movieImgPath" column="MOVIEIMGPATH"/>
+			<result property="movieInfo" column="MOVIEINFO"/>
+			<association property="movieType" javaType="MovieType">
+				<id property="movieTypeId" column="MOVIETYPEID"/>
+				<result property="movieType" column="MOVIETYPE"/>
+			</association>
+		</association>
+		<association property="videoHall" javaType="com.cinema.prosenium.entity.VideoHall">
+			<id property="videoHallId" column="VIDEOHALLID"/>
+			<result property="videoHallSeatNum" column="VIDEOHALLSEATNUM"/>
+			<result property="videoHallSeatRows" column="VIDEOHALLSEATROWS"/>
+			<result property="videoHallSeatCols" column="VIDEOHALLSEATCOLS"/>
+			<association property="videoHallType" javaType="VideoHallType">
+				<id property="videoHallTypeId" column="VIDEOHALLTYPEID"/>
+				<result property="videoHallType" column="VIDEOHALLTYPE"/>
+			</association>
+		</association>
+	</resultMap>
+	
+	<select id="queryScheduleIdSchedule" resultMap="ScheduleResultMap" parameterType="int">
+		SELECT M1.MOVIETYPEID,M1.MOVIETYPE,S.SCHEDULEITEMID,S.MOVIEID,S.SCHEDULEITEMTIME,S.VIDEOHALLID,M.MOVIEID,M.MOVIENAME,M.MOVIEPOSTER,M.MOVIEDIRECTOR,M.MOVIEACTOR,M.MOVIETYPEID,M.MOVIEPRICE,M.MOVIEIMGPATH,M.MOVIEINFO,V.VIDEOHALLID,V.VIDEOHALLTYPEID,V.VIDEOHALLSEATNUM,V.VIDEOHALLSEATROWS,V.VIDEOHALLSEATCOLS,V1.VIDEOHALLTYPE FROM SCHEDULE S,MOVIE M,MOVIETYPE M1,VIDEOHALL V,VIDEOHALLTYPE V1 WHERE M1.MOVIETYPEID=M.MOVIETYPEID AND  M.MOVIEID=S.MOVIEID AND S.VIDEOHALLID = V.VIDEOHALLID AND V1.VIDEOHALLTYPEID=V.VIDEOHALLTYPEID AND S.SCHEDULEITEMID=#{scheduleItemId}  	
+	</select>
+	
+	<select id="queryMovieIdSchedule" resultMap="ScheduleResultMap" parameterType="int">
+		SELECT M1.MOVIETYPEID,M1.MOVIETYPE,S.SCHEDULEITEMID,S.MOVIEID,S.SCHEDULEITEMTIME,S.VIDEOHALLID,M.MOVIEID,M.MOVIENAME,M.MOVIEPOSTER,M.MOVIEDIRECTOR,M.MOVIEACTOR,M.MOVIETYPEID,M.MOVIEPRICE,M.MOVIEIMGPATH,M.MOVIEINFO,V.VIDEOHALLID,V.VIDEOHALLTYPEID,V.VIDEOHALLSEATNUM,V.VIDEOHALLSEATROWS,V.VIDEOHALLSEATCOLS,V1.VIDEOHALLTYPE FROM SCHEDULE S,MOVIE M,MOVIETYPE M1,VIDEOHALL V,VIDEOHALLTYPE V1 WHERE M1.MOVIETYPEID=M.MOVIETYPEID AND  M.MOVIEID=S.MOVIEID AND S.VIDEOHALLID = V.VIDEOHALLID AND V1.VIDEOHALLTYPEID=V.VIDEOHALLTYPEID AND S.MOVIEID=#{movieId}  	
+	</select>
+</mapper>

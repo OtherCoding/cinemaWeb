@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cinema.manager.mapping.userMapper">
+	<select id="queryUser" parameterType="User" resultType="User">
+		SELECT USERNAME,USERPWD,USERID,USERTYPE FROM USERS WHERE USERNAME=#{userName} AND USERPWD=#{userPwd}	
+	</select>
+	
+	<select id="queryUserAll" resultType="User">
+		SELECT USERNAME,USERPWD,USERID,USERTYPE FROM USERS
+	</select>
+	
+	
+	<insert id="addUser" parameterType="User">
+		INSERT INTO USERS VALUES(userid_seq.nextval,#{userName},#{userPwd},#{userType})
+	</insert>
+	
+	<update id="editorUser" parameterType="User">
+		UPDATE USERS SET USERTYPE=#{userType} WHERE USERID=#{userId}
+	</update>
+</mapper>

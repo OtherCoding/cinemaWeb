@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+/* top */
+*{
+	margin:0;
+	padding:0;
+}
+ul{
+	padding-left:0px;
+	list-style:none;
+}
+a{
+	text-decoration:none;
+}
+.top{
+	width:100%;
+	margin:0 auto;
+	height:70px;
+	background-color:#2d3e50;
+	position:relative;
+}
+#logo-main{
+	background-image:url(../../images/prosenium/logo_main.jpg);
+	background-repeat:no-repeat;
+	width:75px;
+	height:60px;
+	position:absolute;
+	left:110px;
+	top:5px;
+	padding-bottom:3px;
+}
+.top ul{
+	position:absolute;
+	left:800px;
+	top:10px;
+	
+}
+.top ul li{
+	float:left;
+	margin-right:8px;
+	line-height:58px;
+	cursor: pointer;
+	margin: 0 40px 0 0;
+	font-size: 16px;
+	padding: 0 5px;
+	position:relative;
+}
+.active{
+	color:#CCC;
+}
+.active:hover{
+	border-bottom: 2px solid #ff6640;
+	color:#ff6640;
+}
+
+#top-ul2{
+	position:absolute;
+	left:1500px;
+	top:10px;
+}
+
+/* middle */
+
+/* foot */
+.foot {
+	width: 100%;
+	height: 339px;
+	background-color: #000;
+	color: #b2b2b2;
+	margin-top:20px;
+}
+.foot ul li {
+	float: left;
+}
+.foot ul {
+	margin: 0 auto;
+	width: 1200px;
+	height:20px;
+}
+.bottom-fix {
+	margin: 40px auto;
+	width: 1200px;
+	text-align:center;
+}
+a{
+	text-decoration: none;
+	color: #b2b2b2;
+}
+.content_inner{
+	background-color:#1a1a1a;
+	width:100%;
+	height:150px;
+}
+a:hover{
+	color:#ff6640;
+	border-bottom: 1px solid #ff6640;
+}
+.content_inner h2,.content_inner .service{
+	padding-top:30px;
+	margin-left:200px;
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+	line-height:150px;
+}
+.moblie{
+	font-size: 20px;
+    margin-right: 15px;
+	margin-left:120px;
+}
+

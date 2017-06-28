@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cinema.prosenium.mapping.movieMapper">
+	
+	<resultMap id="MovieResultMap" type="com.cinema.prosenium.entity.Movie">
+		<id property="movieId" column="MOVIEID"/>
+		<result property="movieName" column="MOVIENAME"/>
+		<result property="moviePoster" column="MVOIEPOSTER"/>
+		<result property="movieDirector" column="MOVIEDIRECTOR"/>
+		<result property="movieActor" column="MOVIEACTOR"/>
+		<result property="moviePrice" column="MOVIEPRICE"/>
+		<result property="movieImgPath" column="MOVIEIMGPATH"/>
+		<result property="movieInfo" column="MOVIEINFO"/>
+		<association property="movieType" javaType="MovieType">
+			<id property="movieTypeId" column="MOVIETYPEID"/>
+			<result property="movieType" column="MOVIETYPE"/>
+		</association>
+	</resultMap>
+
+	<select id="queryMovieInfo" resultMap="MovieResultMap" parameterType="int">
+		SELECT M1.MOVIEID,M1.MOVIENAME,M1.MOVIEPOSTER,M1.MOVIEDIRECTOR,M1.MOVIEACTOR,M1.MOVIETYPEID,M2.MOVIETYPE,M1.MOVIEPRICE,M1.MOVIEIMGPATH,M1.MOVIEINFO FROM MOVIE M1,MOVIETYPE M2 WHERE M1.MOVIETYPEID=M2.MOVIETYPEID AND MOVIEID=#{movieId}	
+	</select>
+	
+	
+	<select id="queryMoviePage" resultType="Movie" parameterType="PageBean">
+		SELECT M.MOVIEID,M.MOVIENAME,M.MOVIEPOSTER,M.MOVIEDIRECTOR,M.MOVIEACTOR,M.MOVIETYPEID,M.MOVIEPRICE,M.MOVIEIMGPATH FROM MOVIE M,
+		(SELECT ROWNUM R,MOVIEID FROM MOVIE) RU WHERE  RU.MOVIEID=M.MOVIEID AND RU.R &gt;=((#{currPageNo}-1)* #{pageSize} +1) AND RU.R &lt;=(#{currPageNo}*#{pageSize})
+	</select>
+	
+	<select id="queryMovieCount" resultType="int">
+		SELECT COUNT(1) FROM MOVIE	
+	</select>
+</mapper>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cinema.prosenium.mapping.userMapper">
+	<select id="queryUser" parameterType="User" resultType="User">
+		SELECT USERNAME,USERPWD,USERID,USERTYPE FROM USERS WHERE USERNAME=#{userName} AND USERPWD=#{userPwd}	
+	</select>
+	<update id="addUser" parameterType="User" >
+		INSERT INTO USERS VALUES(USERID_SEQ.NEXTVAL,#{userName},#{userPwd},2)  	
+	</update>
+</mapper>

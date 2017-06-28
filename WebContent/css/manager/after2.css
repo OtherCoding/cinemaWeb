@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+/* top */
+/* top */
+*{
+	margin:0;
+	padding:0;
+}
+a {
+    color: #347e81;
+    text-decoration: none;
+}
+
+table{
+	border-collapse:collapse;
+
+}
+
+ul{
+	padding-left:0px;
+	list-style:none;
+}
+.top{
+	width:100%;
+	margin:0 auto;
+	height:70px;
+	background-color:#2d3e50;
+	position:relative;
+}
+#logo-main{
+	background-image:url(../images/logo_main.jpg);
+	background-repeat:no-repeat;
+	width:75px;
+	height:60px;
+	position:absolute;
+	left:110px;
+	top:5px;
+	padding-bottom:3px;
+}
+.top ul{
+	position:absolute;
+	left:600px;
+	top:10px;
+	
+}
+.top ul li{
+	float:left;
+	margin-right:8px;
+	line-height:58px;
+	cursor: pointer;
+	margin: 0 40px 0 0;
+	font-size: 16px;
+	padding: 0 5px;
+	position:relative;
+}
+.active{
+	color:#CCC;
+}
+.active:hover{
+	border-bottom: 2px solid #ff6640;
+	color:#ff6640;
+}
+
+#top-ul2{
+	position:absolute;
+	left:1500px;
+	top:10px;
+}
+
+
+/* middle */
+
+/* foot */
+.foot {
+	width: 100%;
+	line-height:54px;
+	height: 54px;
+	background-color: #2d3e50;
+	color: #b2b2b2;
+	text-align:center;
+}
+.foot a {
+	text-decoration: none;
+	color: #b2b2b2;
+}
+
+.foot a:hover{
+	color:#ff6640;
+	border-bottom: 1px solid #ff6640;
+}
+button:hover{
+	cursor:pointer;
+}
+

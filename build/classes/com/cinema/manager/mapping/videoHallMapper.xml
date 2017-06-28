@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cinema.manager.mapping.videoHallMapper">
+
+	<resultMap id="VideoHallResultMap" type="com.cinema.prosenium.entity.VideoHall">
+		<id property="videoHallId" column="VIDEOHALLID" />
+		<result property="videoHallSeatNum" column="VIDEOHALLSEATNUM"/>
+		<result property="videoHallSeatRows" column="VIDEOHALLSEATROWS"/>
+		<result property="videoHallSeatCols" column ="VIDEOHALLSEATCOLS"/>
+		<association property="videoHallType" javaType="com.cinema.prosenium.entity.VideoHallType">
+			<id property="videoHallTypeId" column="VIDEOHALLTYPEID"></id>
+			<result property="videoHallType" column="VIDEOHALLTYPE" />
+		</association>
+	</resultMap>
+
+	<select id="queryVideoHallAll" resultMap="VideoHallResultMap">
+		SELECT V1.VIDEOHALLID,V1.VIDEOHALLTYPEID,V1.VIDEOHALLSEATNUM,V1.VIDEOHALLSEATROWS,V1.VIDEOHALLSEATCOLS,V2.VIDEOHALLTYPEID,V2.VIDEOHALLTYPE FROM VIDEOHALL V1,VIDEOHALLTYPE V2 WHERE V1.VIDEOHALLTYPEID=V2.VIDEOHALLTYPEID ORDER BY V1.VIDEOHALLID
+	</select>
+	<delete id="deleteVideoHall" parameterType="int">
+		DELETE FROM VIDEOHALL WHERE VIDEOHALLID=#{deleteVideoHallId}
+	</delete>
+	
+	<select id="queryVideoHall" parameterType="int" resultMap="VideoHallResultMap">
+		SELECT V1.VIDEOHALLID,V1.VIDEOHALLTYPEID,V1.VIDEOHALLSEATNUM,V1.VIDEOHALLSEATROWS,V1.VIDEOHALLSEATCOLS,V2.VIDEOHALLTYPEID,V2.VIDEOHALLTYPE FROM VIDEOHALL V1,VIDEOHALLTYPE V2 WHERE V1.VIDEOHALLTYPEID=V2.VIDEOHALLTYPEID AND V1.VIDEOHALLID=#{videoHallId}
+	</select>
+	
+	<delete id="addVideoHall" parameterType="VideoHall">
+		INSERT INTO VIDEOHALL VALUES(videohallid_seq.nextval,#{videoHallType.videoHallTypeId},#{videoHallSeatNum},#{videoHallSeatRows},#{videoHallSeatCols})
+	</delete>
+	<update id="editorVideoHall" parameterType="VideoHall">
+		UPDATE VIDEOHALL SET VIDEOHALLSEATROWS=#{videoHallSeatRows},VIDEOHALLSEATNUM=#{videoHallSeatNum},VIDEOHALLSEATCOLS=#{videoHallSeatCols},VIDEOHALLTYPEID=#{videoHallType.videoHallTypeId} WHERE VIDEOHALLID=#{videoHallId}
+	</update>
+</mapper>
